@@ -1,0 +1,10 @@
+﻿@model List<CS_project_MVC_Classwork_1.Models.Product>
+
+
+	<h1>Form to add new product:</h1>
+<form asp-action="AddProduct" method="post">
+	<input type="text" name="Name" placeholder="Name of product"/>
+	<input type="text" name="Description" placeholder="Description of product"/>
+	<input type="number" name="Price" placeholder="Price of product"/>
+	<button type="submit" >Add</button>
+</form>

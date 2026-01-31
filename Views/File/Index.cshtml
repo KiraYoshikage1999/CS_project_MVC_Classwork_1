@@ -1,0 +1,28 @@
+﻿	@model List<string> // Taking list of Strings.
+	@* // Special form by using method of Upload we adding new images. *@
+	<form asp-action="Upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" accept="image/*" />
+		<button type="submit">Upload</button>
+	</form>
+
+	@* //Just line. *@
+	<hr />
+
+	@if(Model.Count == 0)
+	{
+		<p>No Files</p>
+	}
+	else
+	{
+		<ul>
+			@foreach(var f in Model)
+			{
+			
+				<li>
+				<img src="/Upload/@f" style="max-width:120px; max-height:120px"/> 
+				<a asp-action="Download"
+				   asp-route-path="@f">Download</a>
+				</li>
+			}
+		</ul>
+	}

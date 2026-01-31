@@ -1,0 +1,27 @@
+﻿@model List<CS_project_MVC_Classwork_1.Models.Product>
+
+<h1>Search product by name</h1>
+<form asp-action="SearchProduct" method="get">
+	<input type="text" name="Name" placeholder="Name of Product"/>
+	<button type="submit">Search</button>
+</form>
+<hr />
+@if(ViewBag.SearchQuery != null)
+{
+	<p>Results:</p>
+	@if (Model != null && Model.Any())
+	{
+		<ul>
+			@foreach(var product in Model)
+			{
+				<li>
+					@product.Name - @product.Description - @product.Price
+				</li>
+			}
+		</ul>
+	}
+	else
+	{
+		<p>Product not found by this Name</p>
+	}
+}

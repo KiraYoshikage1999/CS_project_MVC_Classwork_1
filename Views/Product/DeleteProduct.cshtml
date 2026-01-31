@@ -1,0 +1,21 @@
+﻿@model List<CS_project_MVC_Classwork_1.Models.Product>
+
+<h2>Choose product for delete:</h2> 
+
+<ul>
+	@foreach(var p in Model)
+{
+	@* <li>
+		@p.Name - @p.Description - @p.Price
+		<a asp-action="DeleteProduct" asp-route-id="@p.Id">Delete</a>
+	</li> *@
+
+	<li>
+
+		@p.Name - @p.Description - @p.Price
+			<form   asp-action="DeleteProduct" asp-route-id="@p.Id" method="post">
+			<button type="submit">Delete</button>
+		</form>
+	</li>
+}
+</ul>

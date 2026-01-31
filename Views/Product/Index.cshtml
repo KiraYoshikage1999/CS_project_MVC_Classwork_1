@@ -1,0 +1,19 @@
+﻿@model List<CS_project_MVC_Classwork_1.Models.Product>
+
+	<h2>Products</h2>
+
+	<nav>
+		<a href="/Product/AddProduct">Add New Product</a> |
+		<a href="/Product/DeleteProduct">Delete Product</a>	|
+		<a href="/Product/SearchProduct">Search Product</a>
+	</nav>
+	<hr />
+	<ul>
+	@foreach(var p in Model)
+	{
+		<li>
+			<a href="/Product/Details/@p.Id">@p.Name</a>
+			-@p.Price
+		</li>
+	}
+	</ul>
