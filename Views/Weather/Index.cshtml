@@ -1,20 +1,42 @@
-﻿@model CS_project_MVC_Classwork_1B.DTO.ForecastDto
+﻿@model CS_project_MVC_Classwork_1B.DTO.ForecastDto;
 
 <h2>City Weather</h2>
-<form method="post">
-	<input type="text" name="name" placeholder="City" />
-	<button type="submit">Send</button>
+
+<form asp-controller="Weather" asp-action="Index" method="post">
+    <input name="city" placeholder="City" />
+    <button type="submit">Send</button>
 </form>
 
-@if(ViewBag.Error !=null)
+@if (ViewBag.Error != null)
 {
-	<p style="color:red">@ViewBag.Error </p>
+    <p style="color:red">@ViewBag.Error</p>
 }
 
-@if(Model != null )
+@if (Model != null)
 {
-	<hr />
-	<h3>@ViewBag.Place</h3>
-	<p>Coordinate: @Model.Latitude , @Model.Longtude</p>
+    <hr />
 
+    <h3>@ViewBag.Place</h3>
+
+    <p>
+        <strong>Coordinates:</strong>
+        @Model.Latitude , @Model.Longtude
+    </p>
+
+    <h4>Hourly temperature</h4>
+
+    <table border="1" cellpadding="6" cellspacing="0">
+        <tr>
+            <th>Time</th>
+            <th>Temperature (°C)</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Hourly.Time.Count && i < 12; i++)
+        {
+            <tr>
+                <td>@Model.Hourly.Time[i]</td>
+                <td>@Model.Hourly.Temperature_2m[i]</td>
+            </tr>
+        }
+    </table>
 }

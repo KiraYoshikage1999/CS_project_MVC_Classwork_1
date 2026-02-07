@@ -23,12 +23,14 @@ namespace CS_project_MVC_Classwork_1B.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string city)
         {
+            Console.WriteLine(city);
             if (city == null)
             {
                 ViewBag.Error = "City is Empty";
                 return View();
             }
             var place = await _geoService.FindCityAsync(city);
+            Console.WriteLine(place);
             if (place == null)
             {
                 ViewBag.Error = "Place is empty";
@@ -36,6 +38,7 @@ namespace CS_project_MVC_Classwork_1B.Controllers
             }
 
             var data = await _forecastService.GetForecastAsync(place.Latitude, place.Longitude);
+            Console.WriteLine(data);
             if (data == null)
             {
                 ViewBag.Error = "Cannot take info";

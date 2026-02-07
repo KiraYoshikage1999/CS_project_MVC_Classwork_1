@@ -2,7 +2,7 @@
 {
     public class GeoResponseDto
     {
-        public List<GeoResultDto> GeoResults { get; set; }
-
+        public List<GeoResultDto>? Results { get; set; }
+    
     }
 }
