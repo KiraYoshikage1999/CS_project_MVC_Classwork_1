@@ -1,4 +1,4 @@
-//using CS_project_MVC_Classwork_1B.MiddleWare;
+using CS_project_MVC_Classwork_1B.MiddleWare;
 using CS_project_MVC_Classwork_1B.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -52,7 +52,8 @@ namespace Csharp_modelContoroling_lesson
 
             app.UseRouting();
 
-            //app.UseMiddleware<RequestLoggingMiddleWare>()   ;
+            app.UseMiddleware<RequestLoggingMiddleWare>();
+            app.UseMiddleware<RequestAmountHandlerMiddleWare>();
 
             app.UseAuthorization();
 
